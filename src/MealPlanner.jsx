@@ -2,28 +2,33 @@ import React, { useEffect, useState } from "react";
 
 const MealPlanner = () => {
   const [menu, setMenu] = useState([]);
-  const [directions, setDirections] = useState({
-    directions: "Please select a meal!",
-  });
+  const [directions, setDirections] = useState("");
 
   const fetchMenu = () => {
-    setMenu(menu); //(data)
-    console.log(menu);
+    if (menu !== "") {
+      setMenu([menu]); //(data)
+      console.log(menu);
+    } else {
+      setMenu(["No meal selected"]);
+    }
   };
   const fetchMealDirections = () => {
     if (menu !== "") {
       const meal = {
+        directions: menu,
         text: menu,
-        directions: directions,
       };
 
       //   meal = { menu };
       setDirections(directions); //(data*);
-      console.log(meal.text);
       console.log(meal.directions);
+      console.log(meal.text);
+
+      console.log(directions);
     } else {
-      setMenu(["No meal selected"]);
-      setDirections({ directions: "Please select a meal!" });
+      //   setMenu(["No meal selected"]);
+      setDirections("Please select a meal!");
+      console.log(directions);
     }
   };
 
@@ -32,6 +37,7 @@ const MealPlanner = () => {
       <h1>Food Planner App</h1>
       <div>
         <h2>Weekly Meal Plan</h2>
+        <button onClick={() => fetchMenu()}>See Menu</button>
         <ul>
           {Object.keys(menu).map((food) => (
             <li key={food}>
