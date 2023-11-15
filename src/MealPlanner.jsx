@@ -1,67 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import "./App.css";
+import mealData from "./MealData";
 
 const MealPlanner = () => {
-  const [menu, setMenu] = useState([]);
-  const [directions, setDirections] = useState("");
-
-  const fetchMenu = () => {
-    if (menu !== "") {
-      setMenu([menu]); //(data)
-      console.log(menu);
-    } else {
-      setMenu(["No meal selected"]);
-    }
-  };
-  const fetchMealDirections = () => {
-    if (menu !== "") {
-      const meal = {
-        directions: menu,
-        text: menu,
-      };
-
-      //   meal = { menu };
-      setDirections(directions); //(data*);
-      console.log(meal.directions);
-      console.log(meal.text);
-
-      console.log(directions);
-    } else {
-      //   setMenu(["No meal selected"]);
-      setDirections("Please select a meal!");
-      console.log(directions);
-    }
-  };
-
   return (
     <div>
-      <h1>Food Planner App</h1>
-      <div>
-        <h2>Weekly Meal Plan</h2>
-        <button onClick={() => fetchMenu()}>See Menu</button>
-        <ul>
-          {Object.keys(menu).map((food) => (
-            <li key={food}>
-              <strong>{food}:</strong> {menu[food]}
-              <button onClick={() => fetchMealDirections([food])}>
-                Get Directions
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <h2>Meal Direction</h2>
-        {Object.keys(menu).map((food) => (
-          <p key={food}>
-            <strong>{food}:</strong> {menu[food]}
-          </p>
-        ))}
-        {Object.keys(directions).map((food) => (
-          <p key={directions}>
-            <strong>{food}:</strong> {directions[food]}
-          </p>
-        ))}
-      </div>
+      <h1>Weekly Meal Planner</h1>
+      {mealData.map((day) => (
+        <div key={day.day}>
+          <h2>{day.day}</h2>
+          <MealTime
+            mealType="Breakfast"
+            meal={day.breakfast}
+            directions={day.directions.breakfast}
+          />
+          <MealTime
+            mealType="Lunch"
+            meal={day.lunch}
+            directions={day.directions.lunch}
+          />
+          <MealTime
+            mealType="Dinner"
+            meal={day.dinner}
+            directions={day.directions.dinner}
+          />
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const MealTime = ({ mealType, meal, directions }) => {
+  return (
+    <div>
+      <h3>{mealType}</h3>
+      <p>Meal: {meal}</p>
+      <p>Directions: {directions}</p>
     </div>
   );
 };
