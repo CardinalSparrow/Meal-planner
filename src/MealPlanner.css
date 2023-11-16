@@ -5,7 +5,7 @@
 .meal-planner {
   background: #c8e2d2;
   /* margin: 50px; */
-  padding: 50px;
+  padding: 20px;
 }
 .weekly-menu button {
   margin: 0 5px;
@@ -43,12 +43,12 @@
 .hide-btn {
   padding: 5px;
   border-radius: 10px;
-  color: #ffbf00;
+  color: #9c780a;
   margin-right: 5px;
-  border: solid 2px #ffbf00;
+  border: solid 2px #9c780a;
   font-size: 1rem;
 }
 .hide-btn:hover {
-  background-color: #ffbf00;
+  background-color: #9c780a;
   color: #f4f4f4;
 }
