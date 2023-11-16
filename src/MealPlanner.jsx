@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
+import "./MealPlanner.css";
 import mealData from "./MealData";
 
 const MealPlanner = () => {
@@ -7,6 +7,7 @@ const MealPlanner = () => {
   const [visibleDirections, setVisibleDirections] = useState(
     mealData[0].directions
   );
+  //   console.log(visibleDirections);
 
   const handleDayClick = (day) => {
     setSelectedDay(day);
@@ -65,22 +66,22 @@ const MealTime = ({ mealType, meal, onShowDirections }) => {
   return (
     <div className="meal-time">
       <h3>{mealType}</h3>
-      <p>Meal: {meal}</p>
-      <button onClick={() => setShowDirections(!showDirections)}>
+      <p>
+        <strong>Meal:</strong> {meal}
+      </p>
+      <button
+        onClick={() => setShowDirections(!showDirections)}
+        className={showDirections ? "hide-btn" : "show-btn"}
+      >
         {showDirections ? "Hide Directions" : "Show Directions"}
       </button>
-      {showDirections && <p>Directions:{onShowDirections()}</p>}
+      {showDirections && (
+        <p>
+          <strong>Directions:</strong> {onShowDirections()}
+        </p>
+      )}
     </div>
   );
 };
-
-// const MealDirections = ({ dinner }) => {
-//   return (
-//     <aside className="meal-directions">
-//       <h2>Directions</h2>
-//       <p>({dinner})</p>
-//     </aside>
-//   );
-// };
 
 export default MealPlanner;
