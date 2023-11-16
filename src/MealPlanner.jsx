@@ -7,15 +7,16 @@ const MealPlanner = () => {
   const [visibleDirections, setVisibleDirections] = useState(
     mealData[0].directions
   );
+
   const handleDayClick = (day) => {
     setSelectedDay(day);
     setVisibleDirections("");
-    console.log(selectedDay.directions);
+    console.log(selectedDay);
     console.log(mealData[0].directions);
   };
   const handleShowDirections = (mealType) => {
     setVisibleDirections(selectedDay.directions[mealType]);
-    console.log(selectedDay.directions[mealType]);
+    // console.log(selectedDay.directions[mealType]);
   };
 
   return (
@@ -23,21 +24,20 @@ const MealPlanner = () => {
       <WeeklyMenu mealData={mealData} onDayClick={handleDayClick} />
       <div className="current-day">
         <h1>{selectedDay.day}</h1>
-        <h1>{visibleDirections.day}</h1>
         <MealTime
           mealType="Breakfast"
           meal={selectedDay.breakfast}
-          onShowDirections={() => handleShowDirections("breakfast")}
+          onShowDirections={handleShowDirections("breakfast")}
         />
         <MealTime
           mealType="Lunch"
           meal={selectedDay.lunch}
-          onShowDirections={() => handleShowDirections("lunch")}
+          onShowDirections={handleShowDirections("lunch")}
         />
         <MealTime
           mealType="Dinner"
           meal={selectedDay.dinner}
-          onShowDirections={() => handleShowDirections("dinner")}
+          onShowDirections={handleShowDirections("dinner")}
         />
       </div>
     </div>
@@ -58,6 +58,8 @@ const WeeklyMenu = ({ mealData, onDayClick }) => {
 };
 const MealTime = ({ mealType, meal, onShowDirections }) => {
   const [showDirections, setShowDirections] = useState(false);
+  console.log(meal);
+  console.log(mealType);
   return (
     <div className="meal-time">
       <h3>{mealType}</h3>
