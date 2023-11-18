@@ -17,7 +17,7 @@ const mealData = [
     dinner: "Spaghetti",
     directions: {
       breakfast: "Cook oats with milk and add your favorite toppings.",
-      lunch: "Mix grilled chicken, lettuce, tomatoes, and dressing.",
+      lunch: "Order Pizza from Dominos.",
       dinner: "Cook spaghetti and prepare Bolognese sauce.",
     },
   },
