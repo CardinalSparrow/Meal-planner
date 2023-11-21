@@ -33,12 +33,6 @@ To get started with the Meal Planner App:
 
 We welcome contributions from the community to enhance and improve the Meal Planner App. If you have ideas for new features, bug fixes, or other improvements, feel free to open an issue or submit a pull request.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE.md) - see the [LICENSE.md](LICENSE.md) file for details.
-
-## Acknowledgments
-
 ```
 
 ```
